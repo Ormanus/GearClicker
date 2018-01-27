@@ -8,15 +8,13 @@ public class ConveyorScript : MonoBehaviour {
     public float partWidth;
     public GameObject partPrefab;
     public GameObject partBackPrefab;
-    public GameObject playerObject;
+    public PlayerController playerController;
 
     public float speed;
 
     List<Transform> partsRight = new List<Transform>();
     List<Transform> partsLeft = new List<Transform>();
 
-    //TROLL
-    private float angleStep;
     private float width;
     private int amount;
 
@@ -45,12 +43,11 @@ public class ConveyorScript : MonoBehaviour {
             tr.localEulerAngles = new Vector3(180, 0, 0);
             partsLeft.Add(tr);
         }
-
-        angleStep = Mathf.PI * 2.0f / amount;
     }
 
 	void Update ()
     {
+        //move
 		for(int i = 0; i < partsRight.Count; i++)
         {
             partsRight[i].position += new Vector3(speed * Time.deltaTime, 0, 0);
@@ -59,9 +56,7 @@ public class ConveyorScript : MonoBehaviour {
             if (partsRight[i].position.x > width / 2 + partWidth)
             {
                 partsRight[i].position += new Vector3(-(amount * partWidth), 0, 0);
-                //partsRight[i].position = new Vector3(partsRight[i].position.x, Mathf.Sin(i * angleStep) / 10.0f, 0);
-                playerObject.GetComponent<PlayerController>().addMoney();
-//                money.text = "Money: " + Player.money;
+                playerController.addMoney();
             }
 
             if (partsLeft[i].position.x < -width / 2)
@@ -69,10 +64,13 @@ public class ConveyorScript : MonoBehaviour {
                 partsLeft[i].position += new Vector3(amount * partWidth, 0, 0);
             }
         }
-	}
+
+        speed *= (1f - Time.deltaTime);
+    }
 
     public void TickFromGear()
     {
         Debug.Log("Tick from gear");
+        speed += 1.0f;
     }
 }
