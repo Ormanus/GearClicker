@@ -26,10 +26,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            /*
-            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
-            */
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 1000.0f))
             {
@@ -92,13 +88,13 @@ public class PlayerController : MonoBehaviour
         // Move gear1 into position
         if(num==1 || num==2)
         {
-            gear1.transform.position = new Vector3( -determineX(g1size, g2size) , gear1.transform.position.y, gear1.transform.position.z);
+            gear1.transform.position = new Vector3( determineX(g1size, g2size) , gear1.transform.position.y, gear1.transform.position.z);
         }
 
         // Move gear2 into position
         if (num == 2 || num == 3)
         {
-            gear3.transform.position = new Vector3( determineX(g2size, g3size), gear3.transform.position.y, gear3.transform.position.z);
+            gear3.transform.position = new Vector3( -determineX(g2size, g3size), gear3.transform.position.y, gear3.transform.position.z);
 
         }
     }
