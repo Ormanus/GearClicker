@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public GameObject gear1;
     public GameObject gear2;
     public GameObject gear3;
+    public Text moneyUI;
 
     void Start()
     {
@@ -19,6 +20,13 @@ public class PlayerController : MonoBehaviour
     public void addMoney()
     {
         money++;
+        moneyUI.text = "Money: " + money;
+    }
+
+    public void addMoney(int amount)
+    {
+        money += amount;
+        moneyUI.text = "Money: " + money;
     }
 
     void Update()

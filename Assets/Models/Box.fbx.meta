@@ -1,26 +1,26 @@
 fileFormatVersion: 2
-guid: 8e18d81261dded24db079afe1a9976c3
-timeCreated: 1517013451
+guid: 6602698225ea0494790f14c50790b468
+timeCreated: 1517049502
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: No Name
+    2100000: Box
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Gear.007
+    4300000: Box
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: No Name
-    second: {fileID: 2100000, guid: 86c7f9db5b15d814b9d641b1fa223e74, type: 3}
+      name: Box
+    second: {fileID: 2100000, guid: ddcc43ffef789444c94e2c99ed5c892d, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
-    materialSearch: 1
+    materialSearch: 0
     materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
