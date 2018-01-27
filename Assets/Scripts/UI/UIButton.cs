@@ -28,6 +28,7 @@ public class UIButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 cost *= 2;
             }
         }
+        CostText.text = "Cost: " + cost;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
