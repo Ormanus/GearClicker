@@ -4,19 +4,8 @@ using UnityEngine;
 
 public class MasterGearController : GearController
 {
-
-    void Start()
+    public void ApplyClickToGear()
     {
+        GetComponent<Rigidbody>().AddTorque(new Vector3(0, 0, 2), ForceMode.Impulse);
     }
-
-    void Update()
-    {
-        // Handle click event for the first gear
-        if (Input.GetMouseButtonDown(0))
-        {
-            GetComponent<Rigidbody>().AddTorque(new Vector3(0, 0, 2), ForceMode.Impulse);
-
-        }
-    }
-
 }

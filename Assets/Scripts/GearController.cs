@@ -30,7 +30,17 @@ public class GearController : MonoBehaviour {
                 return;
         }
 
-        GetComponent<MeshFilter>().mesh = newMesh;
+        // Update mesh & meshcollider
+        var mf = GetComponent<MeshFilter>();
+        var mc = GetComponent<MeshCollider>();
+
+        mf.mesh = newMesh;
+
+        if(mc != null)
+        {
+            GetComponent<MeshCollider>().sharedMesh = null;
+            GetComponent<MeshCollider>().sharedMesh = mf.mesh;
+        }
     }
 
 }

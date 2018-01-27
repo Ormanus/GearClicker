@@ -23,6 +23,22 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            /*
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
+            */
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 1000.0f))
+            {
+                if (hit.collider.gameObject.name == "Gear1")
+                {
+                    gear1.GetComponent<MasterGearController>().ApplyClickToGear();
+                }
+            }
+        }
 
         // ******************************
         if (Input.GetKeyUp("1"))
