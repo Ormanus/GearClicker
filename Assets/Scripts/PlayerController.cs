@@ -12,9 +12,15 @@ public class PlayerController : MonoBehaviour
     public GameObject gear3;
     public Text moneyUI;
 
+    bool engine;
+    float enginePower = 1.0f;
+
     void Start()
     {
         money = 0;
+        changeGear(1, 8);
+        changeGear(2, 8);
+        changeGear(3, 8);
     }
 
     public void addMoney()
@@ -64,6 +70,68 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyUp("9"))
             changeGear(3, 17);
 
+        if(engine)
+        {
+            gear1.GetComponent<MasterGearController>().ApplyImpulse(Time.deltaTime * enginePower);
+        }
+
+    }
+
+    public void UpgradeGear(int gearNum)
+    {
+        switch (gearNum)
+        {
+            case 1:
+                {
+                    int teeth = gear1.GetComponent<GearController>().gearTeeths;
+                    switch (teeth)
+                    {
+                        case 8:
+                            changeGear(1, 11);
+                            break;
+                        case 11:
+                            changeGear(1, 17);
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                }
+            case 2:
+                {
+                    int teeth = gear2.GetComponent<GearController>().gearTeeths;
+                    switch (teeth)
+                    {
+                        case 8:
+                            changeGear(2, 11);
+                            break;
+                        case 11:
+                            changeGear(2, 17);
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                }
+            case 3:
+                {
+                    int teeth = gear3.GetComponent<GearController>().gearTeeths;
+                    switch (teeth)
+                    {
+                        case 8:
+                            changeGear(3, 11);
+                            break;
+                        case 11:
+                            changeGear(3, 17);
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                }
+            default:
+                return;
+        }
     }
 
     public void changeGear(int num, int size)
@@ -123,5 +191,20 @@ public class PlayerController : MonoBehaviour
             return 3.2f;
 
         return 0.0f;
+    }
+
+    //TODO: create buttons procedurally & assign events in a menu controller
+
+    public void BuyEngine()
+    {
+        if(engine)
+        {
+            enginePower *= 1.5f;
+        }
+        else
+        {
+            engine = true;
+        }
+        //deactivate Buy Engine Button
     }
 }

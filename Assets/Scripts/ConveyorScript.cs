@@ -24,12 +24,21 @@ public class ConveyorScript : MonoBehaviour {
         //create parts
         amount = Mathf.CeilToInt(width / partWidth) + 1;
 
+        System.Random random = new System.Random();
+
         for(int i = 0; i < amount; i++)
         {
             Transform tr = Instantiate(partPrefab).transform;
             tr.name = "Belt_r_" + partsRight.Count;
             tr.position = new Vector3((width / 2) - i * partWidth, 0, 0);
             tr.rotation = Quaternion.identity;
+            Transform box = tr.transform.GetChild(0);
+            float height = 0.7f + (float)(random.Next(0, 4) - 2) / 10.0f;
+            box.localScale = new Vector3(
+                0.7f + (float)(random.Next(0, 8) - 4) / 10.0f,
+                0.7f + (float)(random.Next(0, 8) - 4) / 10.0f,
+                height);
+            box.position = new Vector3(box.position.x, box.position.y + (height - 0.2f) / 4.0f, box.position.z);
             partsRight.Add(tr);
         }
 

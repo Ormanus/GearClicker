@@ -6,7 +6,7 @@ public class GearController : MonoBehaviour {
 
     public int gearTeeths;
 
-    public void changeGear(int newSize)
+    public virtual void changeGear(int newSize)
     {
         if(newSize == gearTeeths) {
             return;

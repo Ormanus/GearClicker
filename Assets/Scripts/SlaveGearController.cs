@@ -13,6 +13,17 @@ public class SlaveGearController : GearController {
 
     void Start()
     {
+        Init();
+    }
+
+    public override void changeGear(int newSize)
+    {
+        base.changeGear(newSize);
+        Init();
+    }
+
+    public void Init()
+    {
         offset = masterGear.transform.rotation.eulerAngles.z;
         prevAngle = transform.rotation.eulerAngles.z;
         gearRatio = (float)masterGear.GetComponent<GearController>().gearTeeths / (float)gearTeeths;
