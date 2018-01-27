@@ -8,21 +8,17 @@ public class ConveyorScript : MonoBehaviour {
     public float partWidth;
     public GameObject partPrefab;
     public GameObject partBackPrefab;
-
-    //+++TEMP
-    public Text money;
-    //---TEMP
+    public GameObject playerObject;
 
     public float speed;
 
     List<Transform> partsRight = new List<Transform>();
     List<Transform> partsLeft = new List<Transform>();
 
-    float width;
-    int amount;
-
     //TROLL
-    float angleStep;
+    private float angleStep;
+    private float width;
+    private int amount;
 
     void Start ()
     {
@@ -31,11 +27,10 @@ public class ConveyorScript : MonoBehaviour {
         //create parts
         amount = Mathf.CeilToInt(width / partWidth) + 1;
 
-
         for(int i = 0; i < amount; i++)
         {
             Transform tr = Instantiate(partPrefab).transform;
-            tr.name = "Belt_" + partsRight.Count;
+            tr.name = "Belt_r_" + partsRight.Count;
             tr.position = new Vector3((width / 2) - i * partWidth, 0, 0);
             tr.rotation = Quaternion.identity;
             partsRight.Add(tr);
@@ -44,7 +39,7 @@ public class ConveyorScript : MonoBehaviour {
         for (int i = 0; i < amount; i++)
         {
             Transform tr = Instantiate(partBackPrefab).transform;
-            tr.name = "Belt_" + partsRight.Count;
+            tr.name = "Belt_l_" + partsLeft.Count;
             tr.position = new Vector3((width / 2) - i * partWidth, -1, 0);
             tr.rotation = Quaternion.identity;
             tr.localEulerAngles = new Vector3(180, 0, 0);
@@ -65,8 +60,8 @@ public class ConveyorScript : MonoBehaviour {
             {
                 partsRight[i].position += new Vector3(-(amount * partWidth), 0, 0);
                 //partsRight[i].position = new Vector3(partsRight[i].position.x, Mathf.Sin(i * angleStep) / 10.0f, 0);
-                Player.money++;
-                money.text = "Money: " + Player.money;
+                playerObject.GetComponent<PlayerController>().addMoney();
+//                money.text = "Money: " + Player.money;
             }
 
             if (partsLeft[i].position.x < -width / 2)
@@ -75,4 +70,9 @@ public class ConveyorScript : MonoBehaviour {
             }
         }
 	}
+
+    public void TickFromGear()
+    {
+        Debug.Log("Tick from gear");
+    }
 }
