@@ -19,7 +19,13 @@ public class UIButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if(playerController.money >= cost)
+        action();
+        CostText.text = "Cost: " + cost;
+    }
+
+    public virtual void action()
+    {
+        if (playerController.money >= cost)
         {
             playerController.addMoney(-cost);
             if (OnClick != null)
@@ -28,7 +34,6 @@ public class UIButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 cost *= 2;
             }
         }
-        CostText.text = "Cost: " + cost;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -46,7 +51,8 @@ public class UIButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         targetObject.GetComponent<MeshRenderer>().material = targetMaterial;
     }
 
-    void Start () {
+    void Start ()
+    {
 		
 	}
 	
