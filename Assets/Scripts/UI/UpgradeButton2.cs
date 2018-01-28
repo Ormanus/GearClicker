@@ -18,7 +18,7 @@ public class UpgradeButton2 : UIButton
             {
                 switch (teeth)
                 {
-                    case 8:
+                    case 7:
                         playerController.changeGear(2, 11);
                         cost = 15;
                         break;

@@ -14,7 +14,7 @@ public class UpgradeButton3 : UIButton
             playerController.addMoney(-cost);
 
             int teeth = gear3.gearTeeths;
-            if (teeth != 8)
+            if (teeth != 7)
             {
                 switch (teeth)
                 {
@@ -23,7 +23,7 @@ public class UpgradeButton3 : UIButton
                         cost = 15;
                         break;
                     case 11:
-                        playerController.changeGear(3, 8);
+                        playerController.changeGear(3, 7);
                         cost = 25;
                         ResetTarget();
                         gameObject.SetActive(false);
