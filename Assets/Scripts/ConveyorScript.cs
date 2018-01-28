@@ -64,7 +64,7 @@ public class ConveyorScript : MonoBehaviour {
             if (partsRight[i].position.x > width / 2 + partWidth)
             {
                 partsRight[i].position += new Vector3(-(amount * partWidth), 0, 0);
-                playerController.addMoney(1);
+                playerController.addMoney(2);
             }
 
             if (partsLeft[i].position.x < -width / 2)

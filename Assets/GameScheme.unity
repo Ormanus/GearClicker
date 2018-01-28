@@ -547,7 +547,7 @@ Prefab:
     - target: {fileID: 3300000, guid: 7755a980be21d5941aef051223ed284a, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 4300000, guid: 8e18d81261dded24db079afe1a9976c3, type: 3}
+      objectReference: {fileID: 4300000, guid: 5b7120f0bddd03843b69195637465cfa, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7755a980be21d5941aef051223ed284a, type: 3}
   m_IsPrefabParent: 0
@@ -819,7 +819,7 @@ Prefab:
     - target: {fileID: 3300000, guid: 7755a980be21d5941aef051223ed284a, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 4300000, guid: 8e18d81261dded24db079afe1a9976c3, type: 3}
+      objectReference: {fileID: 4300000, guid: 5b7120f0bddd03843b69195637465cfa, type: 3}
     - target: {fileID: 400000, guid: 7755a980be21d5941aef051223ed284a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
@@ -1516,6 +1516,7 @@ GameObject:
   - component: {fileID: 1117439257}
   - component: {fileID: 1117439256}
   - component: {fileID: 1117439255}
+  - component: {fileID: 1117439258}
   m_Layer: 5
   m_Name: Twiitter
   m_TagString: Untagged
@@ -1615,6 +1616,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1117439253}
+--- !u!114 &1117439258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1117439253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cb16967d14bcc94bab5157ca76043b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pController: {fileID: 2069205034}
 --- !u!1 &1127644961
 GameObject:
   m_ObjectHideFlags: 0
@@ -2023,7 +2036,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43a9bcba6a21a9e408be4f81164b7f10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gearTeeths: 8
+  gearTeeths: 7
 --- !u!4 &1409810575 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 7755a980be21d5941aef051223ed284a, type: 3}
@@ -2041,7 +2054,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 8e18d81261dded24db079afe1a9976c3, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 5b7120f0bddd03843b69195637465cfa, type: 3}
 --- !u!1 &1464065884
 GameObject:
   m_ObjectHideFlags: 0
@@ -2405,7 +2418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebf0d6ec88a444548834d03bb76795ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gearTeeths: 8
+  gearTeeths: 7
   masterGear: {fileID: 1409810570}
   beltObject: {fileID: 0}
 --- !u!1001 &1835652524
@@ -2948,6 +2961,7 @@ MonoBehaviour:
   moneyUI: {fileID: 1314376764}
   engine: 0
   enginePower: 1
+  clicks: 0
 --- !u!4 &2069205036
 Transform:
   m_ObjectHideFlags: 0

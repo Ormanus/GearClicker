@@ -38,13 +38,11 @@ public class GearController : MonoBehaviour {
             return;
         }
 
-        gearTeeths = newSize;
-
         Mesh newMesh;
         switch (newSize)
         {
-            case 8:
-                newMesh = Resources.Load("Gear8", typeof(Mesh)) as Mesh;
+            case 7:
+                newMesh = Resources.Load("Gear7", typeof(Mesh)) as Mesh;
                 break;
             case 11:
                 newMesh = Resources.Load("Gear11", typeof(Mesh)) as Mesh;
@@ -55,6 +53,8 @@ public class GearController : MonoBehaviour {
             default:
                 return;
         }
+
+        gearTeeths = newSize;
 
         // Update mesh & meshcollider
         var mf = GetComponent<MeshFilter>();

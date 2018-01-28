@@ -13,11 +13,16 @@ public class PlayerController : MonoBehaviour
     public bool engine;
     [HideInInspector]
     public float enginePower = 1.0f;
+
+    [HideInInspector]
+    public int clicks;
+
     private MasterGearController masterGearController;
 
     void Start()
     {
         money = 0;
+        clicks = 0;
         masterGearController = gear1.GetComponent<MasterGearController>();
     }
 
@@ -38,6 +43,7 @@ public class PlayerController : MonoBehaviour
                 if (hit.collider.gameObject.name == "Gear1")
                 {
                     masterGearController.ApplyImpulse(2);
+                    clicks++;
                 }
             }
         }
@@ -58,7 +64,7 @@ public class PlayerController : MonoBehaviour
                     int teeth = gear1.GetComponent<GearController>().gearTeeths;
                     switch (teeth)
                     {
-                        case 8:
+                        case 7:
                             changeGear(1, 11);
                             break;
                         case 11:
@@ -74,7 +80,7 @@ public class PlayerController : MonoBehaviour
                     int teeth = gear2.GetComponent<GearController>().gearTeeths;
                     switch (teeth)
                     {
-                        case 8:
+                        case 7:
                             changeGear(2, 11);
                             break;
                         case 11:
@@ -94,7 +100,7 @@ public class PlayerController : MonoBehaviour
                             changeGear(3, 11);
                             break;
                         case 11:
-                            changeGear(3, 8);
+                            changeGear(3, 7);
                             break;
                         default:
                             break;
@@ -141,17 +147,17 @@ public class PlayerController : MonoBehaviour
 
     private float determineX(int size1,int size2)
     {
-        if (size1 == 8 && size2 == 8)
+        if (size1 == 7 && size2 == 7)
             return 1.74f;
         if (size1 == 11 && size2==11)
             return 2.95f;
         if (size1 == 17 && size2 == 17)
             return 4.58f;
-        if (size1 == 11 && size2 == 8 || size1 == 8 && size2 == 11)
+        if (size1 == 11 && size2 == 7 || size1 == 7 && size2 == 11)
             return 2.39f;
         if (size1 == 11 && size2 == 17 || size1 == 17 && size2 == 11)
             return 3.78f;
-        if (size1 == 8 && size2 == 17 || size1 == 17 && size2 == 8)
+        if (size1 == 7 && size2 == 17 || size1 == 17 && size2 == 7)
             return 3.15f;
 
         return 0.0f;
