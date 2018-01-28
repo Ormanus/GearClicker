@@ -4,8 +4,20 @@ using UnityEngine;
 
 public class MasterGearController : GearController
 {
+    Rigidbody rb;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+
     public void ApplyImpulse(float force)
     {
-        GetComponent<Rigidbody>().AddTorque(new Vector3(0, 0, -force), ForceMode.Impulse);
+        rb.AddTorque(new Vector3(0, 0, -force), ForceMode.Impulse);
+
+        if(rb.angularDrag < 2.0f)
+        {
+            rb.angularDrag += force * 0.02f;
+        }
     }
 }
