@@ -12,8 +12,6 @@ public class UpgradeButton1 : UIButton
         if(playerController.money >= cost)
         {
             playerController.addMoney(-cost);
-            cost *= 2;
-
             int teeth = gear1.gearTeeths;
 
             if (teeth != 17)
@@ -22,10 +20,13 @@ public class UpgradeButton1 : UIButton
                 {
                     case 8:
                         playerController.changeGear(1, 11);
+                        cost = 15;
                         break;
                     case 11:
                         playerController.changeGear(1, 17);
-                        GetComponent<Image>().color = Color.grey;
+                        cost = 25;
+                        ResetTarget();
+                        gameObject.SetActive(false);
                         break;
                     default:
                         break;

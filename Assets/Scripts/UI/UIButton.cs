@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
 
-public class UIButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public class UIButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler, IPointerDownHandler, IPointerUpHandler
 {
     public Text CostText;
     public Material highlightMaterial;
@@ -20,6 +20,7 @@ public class UIButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         action();
         CostText.text = "Cost: " + cost;
+        GetComponent<Image>().color = new Color(0.75f, 0.75f, 0.75f);
     }
 
     public virtual void action()
@@ -32,14 +33,23 @@ public class UIButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
         targetMaterial = targetObject.GetComponent<MeshRenderer>().material;
         targetObject.GetComponent<MeshRenderer>().material = highlightMaterial;
+
+        GetComponent<Image>().color = new Color(0.75f, 0.75f, 0.75f);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        ResetTarget();
+    }
+
+    public void ResetTarget()
+    {
         CostText.text = "";
 
         targetObject.GetComponent<MeshRenderer>().material = targetMaterial;
-    }
+
+        GetComponent<Image>().color = Color.white;
+    } 
 
     void Start ()
     {
@@ -50,4 +60,14 @@ public class UIButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 	void Update () {
 		
 	}
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        GetComponent<Image>().color = Color.grey;
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        GetComponent<Image>().color = new Color(0.75f, 0.75f, 0.75f);
+    }
 }

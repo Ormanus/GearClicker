@@ -14,7 +14,7 @@ public class MasterGearController : GearController
 
         if(rb.angularDrag < 2.0f)
         {
-            rb.angularDrag += force * 0.02f;
+            rb.angularDrag += force * 0.001f;
         }
     }
 

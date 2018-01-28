@@ -13,7 +13,7 @@ public class EngineButton : UIButton
         if (playerController.money >= cost)
         {
             playerController.addMoney(-cost);
-
+            cost += 200;
 
             if (engineObject.activeInHierarchy)
             {
@@ -22,6 +22,7 @@ public class EngineButton : UIButton
             else
             {
                 engineObject.SetActive(true);
+                playerController.engine = true;
                 text.text = "Upgrade Engine";
             }
         }

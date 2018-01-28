@@ -9,7 +9,8 @@ public class PlayerController : MonoBehaviour
     public GameObject gear3;
     public Text moneyUI;
 
-    private bool engine;
+    [HideInInspector]
+    public bool engine;
     [HideInInspector]
     public float enginePower = 1.0f;
     private MasterGearController masterGearController;
