@@ -437,7 +437,7 @@ MonoBehaviour:
   highlightMaterial: {fileID: 2100000, guid: a69a3e22bdf84664f9dea8fd06e78449, type: 2}
   targetObject: {fileID: 1409810570}
   playerController: {fileID: 2069205035}
-  cost: 20
+  cost: 15
   arm: {fileID: 16693474}
   MenuUI: {fileID: 975929104}
 --- !u!114 &136458878
@@ -2107,7 +2107,7 @@ MonoBehaviour:
   highlightMaterial: {fileID: 2100000, guid: a69a3e22bdf84664f9dea8fd06e78449, type: 2}
   targetObject: {fileID: 117745279}
   playerController: {fileID: 2069205035}
-  cost: 200
+  cost: 50
   engineObject: {fileID: 117745279}
   text: {fileID: 1973441191}
 --- !u!114 &1464065887
@@ -2229,7 +2229,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1521892416
 RectTransform:
   m_ObjectHideFlags: 0

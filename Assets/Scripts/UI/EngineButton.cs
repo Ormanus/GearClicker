@@ -13,7 +13,7 @@ public class EngineButton : UIButton
         if (playerController.money >= cost)
         {
             playerController.addMoney(-cost);
-            cost += 200;
+            cost += 80;
 
             if (engineObject.activeInHierarchy)
             {
