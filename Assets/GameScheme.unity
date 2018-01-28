@@ -235,17 +235,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2426f4def4d06534593eeaf8adaa823f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnClick:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  CostText: {fileID: 0}
-  highlightMaterial: {fileID: 0}
-  targetObject: {fileID: 0}
-  playerController: {fileID: 0}
-  cost: 0
-  gear1: {fileID: 0}
+  CostText: {fileID: 1362109683}
+  highlightMaterial: {fileID: 2100000, guid: a69a3e22bdf84664f9dea8fd06e78449, type: 2}
+  targetObject: {fileID: 1409810570}
+  playerController: {fileID: 2069205035}
+  cost: 50
+  gear1: {fileID: 1409810572}
 --- !u!114 &68812165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -417,11 +412,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adcdac477c5116645b4c906905a910eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnClick:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   CostText: {fileID: 1362109683}
   highlightMaterial: {fileID: 2100000, guid: a69a3e22bdf84664f9dea8fd06e78449, type: 2}
   targetObject: {fileID: 1409810570}
@@ -828,30 +818,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 610526551}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3a4d96ae80357b4480b948b2bb7d64f, type: 3}
+  m_Script: {fileID: 11500000, guid: e77ca39d0ebead94482efdd6c2041905, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2069205035}
-        m_MethodName: UpgradeGear
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   CostText: {fileID: 1362109683}
   highlightMaterial: {fileID: 2100000, guid: a69a3e22bdf84664f9dea8fd06e78449, type: 2}
   targetObject: {fileID: 463433828}
   playerController: {fileID: 2069205035}
   cost: 50
+  gear3: {fileID: 463433829}
 --- !u!114 &610526554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1500,30 +1475,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1345670821}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3a4d96ae80357b4480b948b2bb7d64f, type: 3}
+  m_Script: {fileID: 11500000, guid: 84a4e1ae8182fd94d8ba7fbc38e12af8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2069205035}
-        m_MethodName: UpgradeGear
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   CostText: {fileID: 1362109683}
   highlightMaterial: {fileID: 2100000, guid: a69a3e22bdf84664f9dea8fd06e78449, type: 2}
   targetObject: {fileID: 1658286890}
   playerController: {fileID: 2069205035}
   cost: 50
+  gear2: {fileID: 1658286891}
 --- !u!114 &1345670824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1725,52 +1685,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1464065884}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3a4d96ae80357b4480b948b2bb7d64f, type: 3}
+  m_Script: {fileID: 11500000, guid: 889d904a3679977459cb7589c3baec59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2069205035}
-        m_MethodName: BuyEngine
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 117745279}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1973441191}
-        m_MethodName: set_text
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Upgrade Engine
-          m_BoolArgument: 1
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   CostText: {fileID: 1362109683}
   highlightMaterial: {fileID: 2100000, guid: a69a3e22bdf84664f9dea8fd06e78449, type: 2}
   targetObject: {fileID: 117745279}
   playerController: {fileID: 2069205035}
-  cost: 100
+  cost: 200
+  engineObject: {fileID: 117745279}
 --- !u!114 &1464065887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2355,6 +2278,7 @@ MonoBehaviour:
   gear2: {fileID: 1658286890}
   gear3: {fileID: 463433828}
   moneyUI: {fileID: 1314376764}
+  enginePower: 1
 --- !u!4 &2069205036
 Transform:
   m_ObjectHideFlags: 0

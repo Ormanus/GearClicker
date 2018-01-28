@@ -10,7 +10,8 @@ public class PlayerController : MonoBehaviour
     public Text moneyUI;
 
     private bool engine;
-    private float enginePower = 1.0f;
+    [HideInInspector]
+    public float enginePower = 1.0f;
     private MasterGearController masterGearController;
 
     void Start()
@@ -153,20 +154,5 @@ public class PlayerController : MonoBehaviour
             return 3.15f;
 
         return 0.0f;
-    }
-
-    //TODO: create buttons procedurally & assign events in a menu controller
-
-    public void BuyEngine()
-    {
-        if(engine)
-        {
-            enginePower *= 1.5f;
-        }
-        else
-        {
-            engine = true;
-        }
-        //deactivate Buy Engine Button
     }
 }

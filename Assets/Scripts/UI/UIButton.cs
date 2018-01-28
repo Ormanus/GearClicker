@@ -8,7 +8,6 @@ using UnityEngine.Events;
 
 public class UIButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
-    public UnityEvent OnClick;
     public Text CostText;
     public Material highlightMaterial;
     public GameObject targetObject;
@@ -25,15 +24,6 @@ public class UIButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public virtual void action()
     {
-        if (playerController.money >= cost)
-        {
-            playerController.addMoney(-cost);
-            if (OnClick != null)
-            {
-                OnClick.Invoke();
-                cost *= 2;
-            }
-        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)

@@ -20,10 +20,10 @@ public class UpgradeButton3 : UIButton
                 switch (teeth)
                 {
                     case 8:
-                        gear3.changeGear(11);
+                        playerController.changeGear(3, 11);
                         break;
                     case 11:
-                        gear3.changeGear(8);
+                        playerController.changeGear(3, 8);
                         GetComponent<Image>().color = Color.grey;
                         break;
                     default:
