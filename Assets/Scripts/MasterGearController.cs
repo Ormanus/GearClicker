@@ -6,10 +6,7 @@ public class MasterGearController : GearController
 {
     Rigidbody rb;
 
-    private void Start()
-    {
-        rb = GetComponent<Rigidbody>();
-    }
+    float prevAngle = 0.0f;
 
     public void ApplyImpulse(float force)
     {
@@ -19,5 +16,30 @@ public class MasterGearController : GearController
         {
             rb.angularDrag += force * 0.02f;
         }
+    }
+
+    public void Start()
+    {
+        prevAngle = transform.rotation.eulerAngles.z;
+        rb = GetComponent<Rigidbody>();
+    }
+
+    public void Update()
+    {
+        float offset = transform.rotation.eulerAngles.z - prevAngle;
+        if (offset == 0.0f)
+            return;
+
+        // Did Internal counter reset?
+        if (offset < 0.0f)
+        {
+            offset += 360.0f;
+        }
+
+        //
+        changeCounter(offset);
+
+        //
+        prevAngle = transform.rotation.eulerAngles.z;
     }
 }

@@ -5,65 +5,46 @@ public class SlaveGearController : GearController {
     public GameObject masterGear;
     public GameObject beltObject;
 
-    private float offset;
-    private float prevAngle;
-    private float gearRatio;
+    private GearController masterGearController;
 
     void Start()
     {
-        Init();
+        masterGearController = masterGear.GetComponent<GearController>();
     }
 
     public override void changeGear(int newSize)
     {
         base.changeGear(newSize);
-        Init();
-    }
-
-    public void Init()
-    {
-        offset = masterGear.transform.rotation.eulerAngles.z;
-        prevAngle = transform.rotation.eulerAngles.z;
-        gearRatio = (float)masterGear.GetComponent<GearController>().gearTeeths / (float)gearTeeths;
     }
 
     void LateUpdate()
     {
-        float curAngle = transform.rotation.eulerAngles.z;
-        float newOffset = ( masterGear.transform.rotation.eulerAngles.z - offset ) * gearRatio;
-
-        /* FIXME .. 
-         * 
-         mgo: 359.5211 / Offset:358.1335 / NewOffset: 1.387665
-         mgo: 0.17362 / Offset:359.5211 / NewOffset: -359.3475
-         Tick from gear
-         mgo: 0.8000239 / Offset:0.17362 / NewOffset: 0.6264039
-         * 
-        if (beltObject != null && newOffset != 0.0f)
-            Debug.Log("mgo: "+ masterGear.transform.rotation.eulerAngles.z + " / Offset:" + offset + " / NewOffset: "+newOffset);
-            */
-
-        offset = masterGear.transform.rotation.eulerAngles.z;
-
-        transform.Rotate(new Vector3(0, 0, -newOffset));
-        CheckFullRotation(-newOffset, curAngle);
-    }
-
-    void CheckFullRotation(float newOffset, float curAngle)
-    {
-        // Current object doesn't have reference to belt.. futher checking is useless
-        if (beltObject == null)
-        {
+        // Fetch revolution info from master
+        float angleCounter = -masterGearController.getCounter();
+        if (angleCounter == 0.0f)
             return;
-        }
 
-        // Determine, if we have rolled one round
-        if ((newOffset > 0 && curAngle < prevAngle) || (newOffset < 0 && curAngle > prevAngle))
+        // Reset masters counter
+        masterGearController.resetCounter();
+
+        // Take gearratio into account, and add opposite rotation to our counter
+        float gearRatio = (float)masterGearController.gearTeeths / (float)gearTeeths;
+        angleCounter *= gearRatio;
+        changeCounter(angleCounter);
+
+        transform.Rotate(new Vector3(0, 0, getCounterDiff() % 360.0f ));
+
+        // If this is the last gear, we need to transfer full rotations to belt
+        if(beltObject != null)
         {
-            beltObject.GetComponent<ConveyorScript>().TickFromGear();
-        }
+            int fullRotations = (int)System.Math.Floor(getCounter() / 360.0f);
+            for(int l1=0; l1<fullRotations; l1++)
+            {
+                beltObject.GetComponent<ConveyorScript>().TickFromGear();
+                changeCounter(-360.0f);
 
-        prevAngle = curAngle;
+            }
+        }
     }
 
 }
