@@ -1,32 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-
     public int money;
     public GameObject gear1;
     public GameObject gear2;
     public GameObject gear3;
     public Text moneyUI;
 
-    bool engine;
-    float enginePower = 1.0f;
+    private bool engine;
+    private float enginePower = 1.0f;
+    private MasterGearController masterGearController;
 
     void Start()
     {
         money = 0;
-        changeGear(1, 8);
-        changeGear(2, 8);
-        changeGear(3, 8);
-    }
-
-    public void addMoney()
-    {
-        money++;
-        moneyUI.text = "Money: " + money;
+        masterGearController = gear1.GetComponent<MasterGearController>();
     }
 
     public void addMoney(int amount)
@@ -45,34 +35,14 @@ public class PlayerController : MonoBehaviour
             {
                 if (hit.collider.gameObject.name == "Gear1")
                 {
-                    gear1.GetComponent<MasterGearController>().ApplyClickToGear();
+                    masterGearController.ApplyImpulse(2);
                 }
             }
         }
 
-        // ******************************
-        if (Input.GetKeyUp("1"))
-            changeGear(1, 8);
-        if (Input.GetKeyUp("2"))
-            changeGear(1, 11);
-        if (Input.GetKeyUp("3"))
-            changeGear(1, 17);
-        if (Input.GetKeyUp("4"))
-            changeGear(2, 8);
-        if (Input.GetKeyUp("5"))
-            changeGear(2, 11);
-        if (Input.GetKeyUp("6"))
-            changeGear(2, 17);
-        if (Input.GetKeyUp("7"))
-            changeGear(3, 8);
-        if (Input.GetKeyUp("8"))
-            changeGear(3, 11);
-        if (Input.GetKeyUp("9"))
-            changeGear(3, 17);
-
         if(engine)
         {
-            gear1.GetComponent<MasterGearController>().ApplyImpulse(Time.deltaTime * enginePower);
+            masterGearController.ApplyImpulse(Time.deltaTime * enginePower);
         }
 
     }
@@ -118,11 +88,11 @@ public class PlayerController : MonoBehaviour
                     int teeth = gear3.GetComponent<GearController>().gearTeeths;
                     switch (teeth)
                     {
-                        case 8:
+                        case 17:
                             changeGear(3, 11);
                             break;
                         case 11:
-                            changeGear(3, 17);
+                            changeGear(3, 8);
                             break;
                         default:
                             break;
@@ -136,49 +106,41 @@ public class PlayerController : MonoBehaviour
 
     public void changeGear(int num, int size)
     {
-        GameObject dest = null;
+        var dest = new GameObject[3] { gear1, gear2, gear3 };
 
-        switch(num)
-        {
-            case 1:
-                dest = gear1;
-                break;
-            case 2:
-                dest = gear2;
-                break;
-            case 3:
-                dest = gear3;
-                break;
-            default:
-                return;
-        }
+        if (num < 1 || num > 3)
+            return;
 
         // Change mesh
-        dest.GetComponent<GearController>().changeGear(size);
-
-        // Fetch gear teeth count
-        int g1size = gear1.GetComponent<GearController>().gearTeeths;
-        int g2size = gear2.GetComponent<GearController>().gearTeeths;
-        int g3size = gear3.GetComponent<GearController>().gearTeeths;
+        dest[num-1].GetComponent<GearController>().changeGear(size);
 
         // Move gear1 into position
         if(num==1 || num==2)
-        {
-            gear1.transform.position = new Vector3( determineX(g1size, g2size) , gear1.transform.position.y, gear1.transform.position.z);
-        }
+            gear1.transform.position = new Vector3( 
+                determineX(
+                    gear1.GetComponent<GearController>().gearTeeths,
+                    gear2.GetComponent<GearController>().gearTeeths
+                ) , 
+                gear1.transform.position.y, 
+                gear1.transform.position.z
+                );
 
         // Move gear2 into position
         if (num == 2 || num == 3)
-        {
-            gear3.transform.position = new Vector3( -determineX(g2size, g3size), gear3.transform.position.y, gear3.transform.position.z);
-
-        }
+            gear3.transform.position = new Vector3( 
+                -determineX(
+                    gear2.GetComponent<GearController>().gearTeeths,
+                    gear3.GetComponent<GearController>().gearTeeths
+                ), 
+                gear3.transform.position.y, 
+                gear3.transform.position.z
+                );
     }
 
     private float determineX(int size1,int size2)
     {
         if (size1 == 8 && size2 == 8)
-            return 1.73f;
+            return 1.74f;
         if (size1 == 11 && size2==11)
             return 2.95f;
         if (size1 == 17 && size2 == 17)
@@ -188,7 +150,7 @@ public class PlayerController : MonoBehaviour
         if (size1 == 11 && size2 == 17 || size1 == 17 && size2 == 11)
             return 3.78f;
         if (size1 == 8 && size2 == 17 || size1 == 17 && size2 == 8)
-            return 3.2f;
+            return 3.15f;
 
         return 0.0f;
     }

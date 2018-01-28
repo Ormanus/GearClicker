@@ -6,6 +6,8 @@ public class GearController : MonoBehaviour {
 
     public int gearTeeths;
 
+    private float angleCounter = 0.0f;
+
     public virtual void changeGear(int newSize)
     {
         if(newSize == gearTeeths) {

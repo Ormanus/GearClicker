@@ -64,7 +64,7 @@ public class ConveyorScript : MonoBehaviour {
             if (partsRight[i].position.x > width / 2 + partWidth)
             {
                 partsRight[i].position += new Vector3(-(amount * partWidth), 0, 0);
-                playerController.addMoney();
+                playerController.addMoney(1);
             }
 
             if (partsLeft[i].position.x < -width / 2)
@@ -78,7 +78,6 @@ public class ConveyorScript : MonoBehaviour {
 
     public void TickFromGear()
     {
-        Debug.Log("Tick from gear");
         speed += 1.0f;
     }
 }
